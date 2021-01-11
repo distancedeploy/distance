@@ -62,5 +62,14 @@ def find_distance(theSource, theDestination):
         else:
             return "input not valid"
 
+
+@app.route('/health')
+def health():
+    try:
+        pd.read_csv('distance.csv')
+        return ""
+    except:
+        return "connection to DB is not OK"
+
 if __name__ == '__main__':
     app.run(port=8080)
